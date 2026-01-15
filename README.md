@@ -13,11 +13,7 @@ npm run dev
 
 Runs on: http://localhost:5174/
 
-## Usage
-1. Open http://localhost:5174/ in your browser
-2. Add tasks with title and optional description
-3. Mark tasks as done/pending
-4. Delete tasks
+
 
 
 
