@@ -1,0 +1,43 @@
+body {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-form input {
+  padding: 8px;
+}
+
+.task-form button {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+}
+
+.task-item button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
