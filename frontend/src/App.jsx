@@ -5,6 +5,7 @@ import { getTasks, createTask, deleteTask, toggleTask } from "./api";
 export default function App() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const loadTasks = async () => {
     const data = await getTasks();
@@ -18,8 +19,9 @@ export default function App() {
   const addTask = async () => {
     if (!title.trim()) return alert("Title is required");
     try {
-      await createTask({ title: title.trim() });
+      await createTask({ title: title.trim(), description: description.trim() });
       setTitle("");
+      setDescription("");
       loadTasks();
     } catch (error) {
       alert("Failed to add task");
@@ -56,13 +58,23 @@ export default function App() {
           onChange={e => setTitle(e.target.value)}
         />
 
+        <input
+          type="text"
+          placeholder="Description (optional)"
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+        />
+
         <button onClick={addTask}>Add Task</button>
       </div>
 
       <ul className="task-list">
         {tasks.map(task => (
           <li key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-            <span>{task.title}</span>
+            <div>
+              <span>{task.title}</span>
+              {task.description && <p>{task.description}</p>}
+            </div>
             <div>
               <button className="toggle" onClick={() => handleToggle(task.id)}>
                 {task.completed ? "Mark Pending" : "Mark Done"}

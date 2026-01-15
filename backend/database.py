@@ -14,6 +14,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
+            description TEXT,
             completed INTEGER DEFAULT 0
         )
     """)

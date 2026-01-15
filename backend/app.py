@@ -16,8 +16,8 @@ def create_task():
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO tasks (title) VALUES (?)",
-        (data["title"],)
+        "INSERT INTO tasks (title, description) VALUES (?, ?)",
+        (data["title"], data.get("description", ""))
     )
     conn.commit()
     conn.close()
@@ -38,6 +38,7 @@ def get_tasks():
         tasks.append({
             "id": row["id"],
             "title": row["title"],
+            "description": row["description"],
             "completed": bool(row["completed"])
         })
 
@@ -66,6 +67,9 @@ def update_task(id):
     if "title" in data and data["title"] is not None:
         updates.append("title=?")
         params.append(data["title"])
+    if "description" in data and data["description"] is not None:
+        updates.append("description=?")
+        params.append(data["description"])
     if "completed" in data and data["completed"] is not None:
         updates.append("completed=?")
         params.append(1 if data["completed"] else 0)

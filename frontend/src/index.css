@@ -37,6 +37,16 @@ body {
   text-decoration: line-through;
 }
 
+.task-item div:first-child {
+  flex-grow: 1;
+}
+
+.task-item p {
+  margin: 5px 0 0 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
 .task-item button {
   padding: 5px 10px;
   cursor: pointer;
