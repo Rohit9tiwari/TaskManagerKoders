@@ -53,14 +53,14 @@ export default function App() {
       <div className="task-form">
         <input
           type="text"
-          placeholder="Task title"
+          placeholder="Title"
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
 
         <input
           type="text"
-          placeholder="Description (optional)"
+          placeholder="Description"
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
@@ -71,10 +71,7 @@ export default function App() {
       <ul className="task-list">
         {tasks.map(task => (
           <li key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-            <div>
-              <span>{task.title}</span>
-              {task.description && <p>{task.description}</p>}
-            </div>
+            <span>{task.title}</span>
             <div>
               <button className="toggle" onClick={() => handleToggle(task.id)}>
                 {task.completed ? "Mark Pending" : "Mark Done"}
